@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim Sayfası</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100% !important ;
+            overflow: hidden;
+            position: relative;
+            place-items: center;
+  background-color: white; /* Beyaz arka plan */
+        }
+
+        .left-side {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .right-side {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0056b3;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /*
+    Auther: Abdelrhman Said
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: white !important;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  display: grid;
+
+  font-family: "Poppins", sans-serif;
+  place-items: center;
+  background-color: white !important;
+}
+/*
+    Auther: Abdelrhman Said
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  place-items: center;
+  background-color: white !important; /* Beyaz arka plan */
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="left-side">
+            <img src="https://img.freepik.com/free-vector/contact-center-abstract-concept_335657-3032.jpg?w=740&t=st=1702304956~exp=1702305556~hmac=1086ed751e57a09c1f8bf878e2694b164f9d45a6a960176b9cdbe931588bb5c8" alt="İletişim Görseli">
+        </div>
+        <div class="right-side">
+          <h1>Contact Form</h1>
+
+<form id="contact_form" name="contact_form" method="post">
+    <div class="mb-5 row">
+      <div class="col">
+        <label> Ad</label>
+        <input type="text" required maxlength="50" class="form-control" id="ad" name="first_name">
+    </div>
+        <div class="col">
+            <label> Konu</label>
+            <input type="text" required maxlength="50" class="form-control" id="subject" name="first_name">
+        </div>
+    
+    </div>
+    <div class="mb-5 row">
+        <div class="col">
+            <label for="email_addr">Email </label>
+            <input type="email" required maxlength="50" class="form-control" id="email" name="email"
+                placeholder="name@example.com">
+        </div>
+       
+    </div>
+    <div class="mb-5">
+        <label for="message">Mesaj</label>
+        <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+    </div>
+    <div class="d-grid">
+      <button type="submit" style="width:100%; height: 100%;">Gönder</button>
+    </div>  
+  
+  </form>
+    <style>
+      
+    </style>
+           
+         
+
+            <div class="wrapper">
+              <div class="button">
+                 <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                 </div>
+                 <span>Facebook</span>
+              </div>
+              <div class="button">
+                 <div class="icon">
+                    <i class="fab fa-twitter"></i>
+                 </div>
+                 <span>Twitter</span>
+              </div>
+              <div class="button">
+                 <div class="icon">
+                    <i class="fab fa-instagram"></i>
+                 </div>
+                 <span>Instagram</span>
+              </div>
+             
+              <div class="button">
+                 <div class="icon">
+                    <i class="fab fa-youtube"></i>
+                 </div>
+                 <span style="color: red;">YouTube</span>
+              </div>
+           </div>
+           
+
+          
+        </div>
+        <style>
+
+
+        </style>
+    </div>
+    <div class="iframe-container">
+      <iframe
+        width="1500"
+        height="680"
+        frameborder="0"
+        style="border: 0;"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.904271026043!2d-74.00663734541495!3d40.7127765064237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDUyJzM1LjYiTiA3NMKwMTUnMTguNyJX!5e0!3m2!1sen!2sus!4v1646818444916!5m2!1sen!2sus"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <script>
+      document.getElementById('contact_form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+    
+        const ad = document.getElementById('ad').value;
+        const email = document.getElementById('email').value;
+
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+    
+        try {
+          const response = await fetch('http://localhost:3000/create-contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ad, subject, email, message }), // Corrected key
+          });
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+    
+          const result = await response.json();
+          console.log(result.message);
+        } catch (error) {
+          console.error('Error:', error.message || error);
+        }
+      });
+    </script>
+    <style>
+      .body{
+        overflow-x: hidden;  /* yatay da scrol kaldırma */
+
+      }
+
+    </style>
+</body>
+<style>
+
+
+/* Telefonda ekran genişliği 600px'den küçükse özel stil */
+@media screen and (max-width: 768px) {
+  .iframe-container iframe {
+    height: 300px;
+    width: 100%; /* Genişlik 100%, yani ekran genişliği kadar olacak */
+  border: 0; 
+  margin-top: 00px !important;/* Örneğin, telefonda yüksekliği 300px olarak ayarladım, siz isteğinize göre ayarlayabilirsiniz */
+  }
+}
+       
+.wrapper .button{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+   margin: 0 30px 0 0;
+  overflow: hidden;
+  margin-top: 20px !important;
+  background: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+}
+.wrapper .button:hover{
+  width: 200px;
+}
+.wrapper .button .icon{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrapper .button:nth-child(1):hover .icon{
+  background: #4267B2;
+}
+.wrapper .button:nth-child(2):hover .icon{
+  background: #1DA1F2;
+}
+.wrapper .button:nth-child(3):hover .icon{
+  background: #E1306C;
+}
+.wrapper .button:nth-child(4):hover .icon{
+  background: #333;
+}
+.wrapper .button:nth-child(5):hover .icon{
+  background: #ff0000;
+}
+.wrapper .button .icon i{
+  font-size: 25px;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrapper .button:hover .icon i{
+  color: #fff;
+}
+.wrapper .button span{
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 60px;
+  margin-left: 10px;
+  transition: all 0.3s ease-out;
+}
+.wrapper .button:nth-child(1) span{
+  color: #4267B2;
+}
+.wrapper .button:nth-child(2) span{
+  color: #1DA1F2;
+}
+.wrapper .button:nth-child(3) span{
+  color: #E1306C;
+}
+.wrapper .button:nth-child(4) span{
+  color: #333;
+}
+.wrapper .button:nth-child(5) span{
+  color: #ff0000;
+}
+
+
+
+    /* Add your mobile-specific styles here */
+    .wrapper .button{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+   margin: 0 50px 0 0;
+   margin-top: 20px !important;
+   margin-right: 10px !important;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+}
+
+    body {
+        display: block;
+        height: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .left-side {
+        order: 2;
+    }
+    .left-side img{
+      width: 110%!important;
+      margin-left: -35px !important;
+    }
+   
+
+    .right-side {
+        order: 1;
+    }
+
+    .contact-form {
+        width: 100%;
+        max-width: none;
+    }
+
+  
+}
+
+  
+</style>
+
+</html>
