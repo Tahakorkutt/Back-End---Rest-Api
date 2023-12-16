@@ -13,7 +13,7 @@ const sendEmail = async (options, res) => {
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
       service: process.env.SMPT_SERVICE,
-      secure: true,
+      
       auth: {
         user: 'tahakorkut02@gmail.com',
         pass: 'rqarjwuftliyofud',
