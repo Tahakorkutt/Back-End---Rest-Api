@@ -7,28 +7,23 @@ const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
-
-const sendEmail = async (options, res ) => {
+const sendEmail = async (options, res) => {
+    console.log()
   try {
-  
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: 'tahakorkut02@gmail.com',
         pass: 'rqarjwuftliyofud',
       }
-
-    }
-    );
+    });
 
     const mailOptions = {
-      to: options.to,
+      from: `"${options.ad}" <${options.email}>`, // Gönderen adı ve e-posta adresi burada belirtilir
+      to: options.to, // Alıcı adresi burada belirtilir
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
-      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
-      replyTo: `"${options.ad}" <${options.email}>`
+      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`
     };
-    
-    
 
     // options.ad değerinin bir e-posta adresi olup olmadığını kontrol edin
     if (!options.email.includes('@')) {
@@ -44,7 +39,6 @@ const sendEmail = async (options, res ) => {
   } catch (error) {
     throw new Error(`Error sending email: ${error.message}`);
   }
-
 };
 
 // İletişim oluşturma fonksiyonu

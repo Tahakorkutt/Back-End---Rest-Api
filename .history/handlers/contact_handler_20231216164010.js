@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const sendEmail = async (options, res ) => {
   try {
-  
+    console.log(res, options);
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -22,13 +22,11 @@ const sendEmail = async (options, res ) => {
     );
 
     const mailOptions = {
-      to: options.to,
+      from: `"${options.ad}" <${options.email}>`, // Gönderen adı ve e-posta adresi burada belirtilir
+      to: options.to, // Alıcı adresi burada belirtilir
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
-      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
-      replyTo: `"${options.ad}" <${options.email}>`
+      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`
     };
-    
-    
 
     // options.ad değerinin bir e-posta adresi olup olmadığını kontrol edin
     if (!options.email.includes('@')) {

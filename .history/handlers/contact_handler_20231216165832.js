@@ -20,14 +20,13 @@ const sendEmail = async (options, res ) => {
 
     }
     );
-
     const mailOptions = {
+      from: 'tahakorkut02@gmail.com', // Sadece e-posta adresi
       to: options.to,
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
       text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
-      replyTo: `"${options.ad}" <${options.email}>`
+      replyTo: `"${options.ad}" <${options.email}>` // Gönderen adı ve e-posta adresi burada belirtilir
     };
-    
     
 
     // options.ad değerinin bir e-posta adresi olup olmadığını kontrol edin
