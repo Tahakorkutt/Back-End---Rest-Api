@@ -12,8 +12,8 @@ const sendEmail = async (options, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'tahakorkut02@gmail.com',
-        pass: 'rqarjwuftliyofud',
+        user: 'taha_ksk35@hotmaiil.com',
+        pass: '56737037840taha',
       }
     });
 
@@ -24,22 +24,18 @@ const sendEmail = async (options, res) => {
       replyTo: `"${options.ad}" <${options.email}>`
     };
 
-    // options.ad değerinin bir e-posta adresi olup olmadığını kontrol et
+    // options.ad değerinin bir e-posta adresi olup olmadığını kontrol edin
     if (!options.email.includes('@')) {
       return res.json({ success: false, message: 'Gönderen e-posta adresi geçerli değil.' });
     }
 
-    // E-posta gönderme işlemini gerçekleştir
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error('E-posta gönderme hatası:', error);
         return res.json({ success: false, message: 'E-posta gönderme hatası.' });
       }
-      console.log('E-posta gönderildi:', info.response);
       res.json({ success: true, message: 'E-posta başarıyla gönderildi.' });
     });
   } catch (error) {
-    console.error('Hata oluştu:', error);
     throw new Error(`Error sending email: ${error.message}`);
   }
 };
