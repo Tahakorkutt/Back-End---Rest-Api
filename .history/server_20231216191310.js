@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = express();
 const env = require('dotenv').config();
 const connectDB = require('./config/db');
-app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
