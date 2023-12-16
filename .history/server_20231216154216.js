@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 
 
 
+
 const Router = require('./routes/users');
 
 const { userRegisterValidationRules, userLoginValidationRules, handleInputErrors } = require('./modules/middleware');
