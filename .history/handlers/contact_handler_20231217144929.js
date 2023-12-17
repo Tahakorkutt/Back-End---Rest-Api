@@ -3,7 +3,7 @@ const validator = require('validator')
 const Enum = require('../config/Enum.js')
 const CustomError = require('../lib/Error.js')
 const Response = require('../lib/Response.js')
-const nodeMailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
@@ -23,12 +23,12 @@ const sendEmail = async (options) => {
       from: process.env.SMPT_MAIL,
       to: options.to,
       subject: options.subject,
-      text: `Ad: ${options.ad}\n\n${options.message}`, // Corrected the text template
+      text: Ad: ${options.ad}\n\n${options.message},
     };
 
     await transporter.sendMail(mailOptions);
   } catch (error) {
-    throw new Error(`Error sending email: ${error.message}`); // Corrected the error message template
+    throw new Error(Error sending email: ${error.message});
   }
 };
 

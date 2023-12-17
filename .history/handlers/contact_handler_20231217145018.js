@@ -3,7 +3,7 @@ const validator = require('validator')
 const Enum = require('../config/Enum.js')
 const CustomError = require('../lib/Error.js')
 const Response = require('../lib/Response.js')
-const nodeMailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
