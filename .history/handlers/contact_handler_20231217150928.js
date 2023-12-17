@@ -20,9 +20,8 @@ const sendEmail = async (options) => {
     });
 
     const mailOptions = {
-      from: `"${options.ad}" <${process.env.SMPT_MAIL}>`, // Include sender's name
+      from: `${options.ad} <${process.env.SMPT_MAIL}>`, // Include sender's name
       to: options.to,
-      replyTo: `${options.ad} <${options.email}>`, // Set Reply-To address
       subject: options.subject,
       text: `Ad: ${options.ad}\n\n${options.message}`,
     };
