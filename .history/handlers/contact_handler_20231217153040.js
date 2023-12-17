@@ -38,18 +38,26 @@ const sendEmail = async (options) => {
 // İletişim oluşturma fonksiyonu
 const createContact = async (req, res, next) => {
   try {
-    // Yeni bir iletişim oluştur
+    // Extract information from the request body
     const { ad, email, subject, message } = req.body;
-    const contactCreate = await contactService.createContact(ad, email, subject, message);
 
-
-    // Gönderici olarak formdan alınan e-posta adresini kullan
+    // Sender's email
     const sender = email;
 
-    // Alıcı adresini env değişkeninden al
+    // Recipient's email from environment variable
     const recipient = process.env.YOUR_EMAIL;
 
-    // E-posta gönderme işlemi
+    // Save contact information to the database
+    const contact = new Contact({
+      ad,
+      email,
+      subject,
+      message,
+    });
+
+    await contact.save();
+
+    // Send email
     await sendEmail({ ad, email, subject, message, to: recipient, from: sender });
 
     res.status(200).json({ message: 'İletişim mesajı gönderildi' });
@@ -57,7 +65,6 @@ const createContact = async (req, res, next) => {
     next(error);
   }
 };
-
 
 
 const getContact = async (req, res, next) => {

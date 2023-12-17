@@ -40,8 +40,6 @@ const createContact = async (req, res, next) => {
   try {
     // Yeni bir iletişim oluştur
     const { ad, email, subject, message } = req.body;
-    const contactCreate = await contactService.createContact(ad, email, subject, message);
-
 
     // Gönderici olarak formdan alınan e-posta adresini kullan
     const sender = email;
