@@ -7,18 +7,17 @@ const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
-const sendEmail = async (options, res) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMPT_HOST,
-      port: process.env.SMPT_PORT,
-      service: process.env.SMPT_SERVICE,
-      secure: true,
-      auth: {
-        user: process.env.SMPT_MAIL,
-        pass: process.env.SMPT_PASSWORD,
-      }
-    });
+const sendEmail = async (options) => {
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMPT_HOST,
+    port: process.env.SMPT_PORT,
+    service: process.env.SMPT_SERVICE,
+    secure: true,
+    auth: {
+      user: process.env.SMPT_MAIL,
+      pass: process.env.SMPT_PASSWORD,
+    },
+  });
 
     const mailOptions = {
       to: options.to,
