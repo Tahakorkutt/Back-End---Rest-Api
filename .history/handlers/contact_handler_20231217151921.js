@@ -22,7 +22,7 @@ const sendEmail = async (options) => {
     const mailOptions = {
       from: process.env.SMPT_MAIL, // Only the email address without the name
       to: options.to,
-      replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
+      replyTo: options.email, // Set Reply-To address to the sender's email address
       subject: options.subject,
       text: `Ad: ${options.ad}\n\n${options.message}`,
     };

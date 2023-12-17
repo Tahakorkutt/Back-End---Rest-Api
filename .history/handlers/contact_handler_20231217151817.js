@@ -20,9 +20,9 @@ const sendEmail = async (options) => {
     });
 
     const mailOptions = {
-      from: process.env.SMPT_MAIL, // Only the email address without the name
+      from: `"${options.ad}" <${process.env.SMPT_MAIL}>`, // Include sender's name
       to: options.to,
-      replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
+      replyTo: `${options.ad} <${options.email}>`, // Set Reply-To address
       subject: options.subject,
       text: `Ad: ${options.ad}\n\n${options.message}`,
     };
@@ -32,6 +32,7 @@ const sendEmail = async (options) => {
     throw new Error(`Error sending email: ${error.message}`);
   }
 };
+
 // İletişim oluşturma fonksiyonu
 const createContact = async (req, res, next) => {
   try {
