@@ -13,7 +13,6 @@ const sendEmail = async (options) => {
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
       service: process.env.SMPT_SERVICE,
-      secure:true,
       auth: {
         user: process.env.SMPT_MAIL,
         pass: process.env.SMPT_PASSWORD,
@@ -25,7 +24,7 @@ const sendEmail = async (options) => {
       to: options.to,
       replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
-      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
+      text: `Ad: ${options.ad}\n\n${options.message}`,
     };
 
     await transporter.sendMail(mailOptions);

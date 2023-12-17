@@ -25,7 +25,7 @@ const sendEmail = async (options) => {
       to: options.to,
       replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
-      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
+      text: `Ad: ${options.ad}\n\n${options.message}`,
     };
 
     await transporter.sendMail(mailOptions);

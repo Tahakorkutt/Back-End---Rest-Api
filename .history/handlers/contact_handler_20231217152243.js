@@ -13,7 +13,6 @@ const sendEmail = async (options) => {
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
       service: process.env.SMPT_SERVICE,
-      secure:true,
       auth: {
         user: process.env.SMPT_MAIL,
         pass: process.env.SMPT_PASSWORD,
@@ -21,11 +20,10 @@ const sendEmail = async (options) => {
     });
 
     const mailOptions = {
-      from: process.env.SMPT_MAIL, // Only the email address without the name
+      from: process.env.SMPT_MAIL,
       to: options.to,
-      replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
-      subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
-      text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
+      subject: options.subject,
+      text: `Ad: ${options.ad}\n\nMesaj Konusu: ${options.subject}\n\n${options.message}`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -33,8 +31,6 @@ const sendEmail = async (options) => {
     throw new Error(`Error sending email: ${error.message}`);
   }
 };
-
-
 // İletişim oluşturma fonksiyonu
 const createContact = async (req, res, next) => {
   try {

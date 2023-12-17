@@ -3,37 +3,49 @@ const validator = require('validator')
 const Enum = require('../config/Enum.js')
 const CustomError = require('../lib/Error.js')
 const Response = require('../lib/Response.js')
-const nodeMailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
-const sendEmail = async (options) => {
+const sendEmail = async (options, res) => {
   try {
-    const transporter = nodeMailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMPT_HOST,
       port: process.env.SMPT_PORT,
       service: process.env.SMPT_SERVICE,
-      secure:true,
+      secure: true,
       auth: {
-        user: process.env.SMPT_MAIL,
-        pass: process.env.SMPT_PASSWORD,
-      },
+        user: 'tahakorkut02@gmail.com',
+        pass: 'rqarjwuftliyofud',
+      }
     });
 
     const mailOptions = {
-      from: process.env.SMPT_MAIL, // Only the email address without the name
       to: options.to,
-      replyTo: `"${options.ad}" <${options.email}>`, // Include sender's name in the "Reply-To" field
       subject: 'Yeni İletişim Formu Mesajı Konusu: ' + options.subject,
       text: `Ad : ${options.ad}\nE-posta: ${options.email}\nMesaj: ${options.message}`,
+      replyTo: `"${options.ad}" <${options.email}>`
     };
 
-    await transporter.sendMail(mailOptions);
+    // options.ad değerinin bir e-posta adresi olup olmadığını kontrol et
+    if (!options.email.includes('@')) {
+      return res.json({ success: false, message: 'Gönderen e-posta adresi geçerli değil.' });
+    }
+
+    // E-posta gönderme işlemini gerçekleştir
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('E-posta gönderme hatası:', error);
+        return res.json({ success: false, message: 'E-posta gönderme hatası.' });
+      }
+      console.log('E-posta gönderildi:', info.response);
+      res.json({ success: true, message: 'E-posta başarıyla gönderildi.' });
+    });
   } catch (error) {
+    console.error('Hata oluştu:', error);
     throw new Error(`Error sending email: ${error.message}`);
   }
 };
-
 
 // İletişim oluşturma fonksiyonu
 const createContact = async (req, res, next) => {
@@ -41,14 +53,17 @@ const createContact = async (req, res, next) => {
     // Yeni bir iletişim oluştur
     const { ad, email, subject, message } = req.body;
 
-    // Gönderici olarak formdan alınan e-posta adresini kullan
-    const sender = email;
+    // Gönderici adresini env değişkeninden al
+    const sender = process.env.SMPT_MAIL;
 
     // Alıcı adresini env değişkeninden al
     const recipient = process.env.YOUR_EMAIL;
 
     // E-posta gönderme işlemi
-    await sendEmail({ ad, email, subject, message, to: recipient, from: sender });
+    await sendEmail({ ad, email, subject, message, to: recipient });
+
+    // Veritabanına kaydetme işlemi
+    const createdContact = await contactService.createContact(ad, email, subject, message);
 
     res.status(200).json({ message: 'İletişim mesajı gönderildi' });
   } catch (error) {
